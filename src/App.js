@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import useJsonFetch from './useJsonFetch';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Data />
+      <Error />
+      <Loading />
+    </div>
+  );
+}
+
+function Data() {
+  const [data, loading, error] = useJsonFetch('http://localhost:7070/data');
+  console.log('data loading', loading)
+  console.log('data error', error)
+  console.log('data data', data)
+  return(
+    <div>
+    </div>
+  );
+}
+
+function Error() {
+  const [data, loading, error] = useJsonFetch('http://localhost:7070/error');
+  console.log('error loading', loading)
+  console.log('error error', error)
+  console.log('error data', data)
+  return(
+    <div>
+    </div>
+  );
+}
+
+function Loading() {
+  const [data, loading, error] = useJsonFetch('http://localhost:7070/error');
+  console.log('loading loading', loading)
+  console.log('loading error', error)
+  console.log('loading data', data)
+  return(
+    <div>
     </div>
   );
 }
