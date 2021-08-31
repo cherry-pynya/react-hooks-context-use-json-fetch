@@ -2,28 +2,25 @@ import { useEffect, useState } from "react";
 
 export default function useJsonFetch(url, opts = {}) {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
 
   useEffect(() => {
-    setLoading(true);
     fetch(url)
     .then((response) => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error('Something went wrong');
-      }
+      return response.json();
     })
     .then((data) => {
-      setData(data)
-      setLoading(false)
+      setData(data);
     })
     .catch((error) => {
-      console.log(error)
-      setError(error)
+      console.error(1, error);
+      setError(error);
     })
+    .finally(() => {
+      setLoading(false);
+    });
   }, [])
 
   return [data, loading, error];

@@ -34,7 +34,7 @@ function Error() {
 }
 
 function Loading() {
-  const [data, loading, error] = useJsonFetch('http://localhost:7070/error');
+  const [data, loading, error] = useJsonFetch('http://localhost:7070/loading');
   console.log('loading loading', loading)
   console.log('loading error', error)
   console.log('loading data', data)
